@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Acceso a Wi-Fi</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #e9f0f5;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .splash-box {
-            background: white;
-            border-radius: 12px;
-            max-width: 400px;
-            margin: auto;
-            padding: 40px 30px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .logo {
-            max-width: 120px;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #2c3e50;
-        }
-
-        p {
-            color: #555;
-            font-size: 15px;
-        }
-
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button {
-            margin-top: 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Cautivo - Acceso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="splash-box">
-        <img src="https://via.placeholder.com/120x60?text=LOGO" alt="Logo" class="logo">
-        <h2>Bienvenido a nuestro Wi-Fi</h2>
-        <p>Por favor, ingresa tu correo electrónico para continuar.</p>
-        <form method="post" action="/fgtauth">
-            <input type="hidden" name="4Tredir" value="http://www.google.com">
-            <input type="email" name="username" placeholder="ejemplo@correo.com" required>
-            <button type="submit">Conectar</button>
-        </form>
-    </div>
+  <div class="container">
+    <h2>Bienvenido al Portal Cautivo</h2>
+    <form id="loginForm" onsubmit="return validateEmail()">
+      <input type="email" id="email" required placeholder="Ingresa tu correo electrónico">
+      <button type="submit">Acceder</button>
+    </form>
+  </div>
+
+  <script>
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      const pattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+      if (pattern.test(email)) {
+        window.location.href = "https://www.minseg.gob.pa/";
+        return false; // Previene envío real del formulario
+      } else {
+        alert("Por favor ingresa un correo válido.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
+
 </body>
 
 </html>
